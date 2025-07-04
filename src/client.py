@@ -8,7 +8,6 @@ class Client:
         self._port = self._load_port_from_config(config_file)
 
     def _load_port_from_config(self, config_file: str) -> int:
-        """Load port from config file, default to 6379 if file is missing or invalid."""
         default_port = 6379
         try:
             if os.path.exists(config_file):
@@ -23,7 +22,6 @@ class Client:
             return default_port
 
     def send_command(self, command: str) -> str:
-        """Send a command to the server and return the response."""
         client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         try:
             client.connect((self._host, self._port))
@@ -34,7 +32,6 @@ class Client:
             client.close()
 
     def run(self):
-        """Run CLI to interact with the server."""
         while True:
             command = input("> ").strip()
             if command.lower() == "quit":
