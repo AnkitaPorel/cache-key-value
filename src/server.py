@@ -11,7 +11,6 @@ class Server:
         self._store = Store()
 
     def _load_port_from_config(self, config_file: str) -> int:
-        """Load port from config file, default to 6379 if file is missing or invalid."""
         default_port = 6379
         try:
             if os.path.exists(config_file):
